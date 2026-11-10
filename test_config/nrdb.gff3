@@ -1,0 +1,8 @@
+##gff-version 3
+ctgA	nrdb	match	20000	20900	310	+	.	ID=3398099803;defline=putative esterase
+ctgA	nrdb	match_part	20000	20300	.	+	.	Parent=3398099803
+ctgA	nrdb	match_part	20500	20900	.	+	.	Parent=3398099803
+ctgA	nrdb	match	22000	22600	180	-	.	ID=3398099767;defline=uncharacterized protein
+ctgA	nrdb	match_part	22000	22600	.	-	.	Parent=3398099767
+ctgA	nrdb	match	24000	24400	90	+	.	ID=999999999999;defline=bogus id - NCBI has no record
+ctgA	nrdb	match_part	24000	24400	.	+	.	Parent=999999999999

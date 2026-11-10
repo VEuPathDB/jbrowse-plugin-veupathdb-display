@@ -1,0 +1,4 @@
+##gff-version 3
+ctgA	gsnap	intron	1501	2999	42	+	.	ID=ctgA:1501-2999+;isrpm=3.2;totalscore=120;intronpercent=88;genesourceid=EDEN;annotatedintron=Yes
+ctgA	gsnap	intron	4000	4800	7	+	.	ID=ctgA:4000-4800+;isrpm=0.5;totalscore=9
+ctgA	gsnap	intron	13000	13600	15	-	.	ID=ctgA:13000-13600-;isrpm=1.1;totalscore=30;intronpercent=40;genesourceid=PF3D7_0100100;annotatedintron=No

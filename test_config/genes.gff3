@@ -1,0 +1,8 @@
+##gff-version 3
+ctgA	synthetic	gene	1050	9000	.	+	.	ID=EDEN;Name=EDEN;description=synthetic gene
+ctgA	synthetic	mRNA	1050	9000	.	+	.	ID=EDEN.1;Parent=EDEN
+ctgA	synthetic	CDS	1201	1500	.	+	0	Parent=EDEN.1
+ctgA	synthetic	CDS	3000	3902	.	+	0	Parent=EDEN.1
+ctgA	synthetic	gene	12000	15000	.	-	.	ID=PF3D7_0100100;Name=PF3D7_0100100;description=synthetic gene 2
+ctgA	synthetic	mRNA	12000	15000	.	-	.	ID=PF3D7_0100100.1;Parent=PF3D7_0100100
+ctgA	synthetic	CDS	12100	14900	.	-	0	Parent=PF3D7_0100100.1
