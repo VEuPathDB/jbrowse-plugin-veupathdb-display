@@ -1,0 +1,11 @@
+##fileformat=VCFv4.2
+##contig=<ID=ctgA,length=50001>
+##INFO=<ID=ANN,Number=.,Type=String,Description="Functional annotations">
+#CHROM	POS	ID	REF	ALT	QUAL	FILTER	INFO
+ctgA	1300	.	C	T	50	PASS	ANN=T|stop_gained|HIGH|EDEN|EDEN|transcript|EDEN.1|protein_coding
+ctgA	1350	.	A	G	50	PASS	ANN=G|missense_variant&splice_region_variant|MODERATE|EDEN|EDEN|transcript|EDEN.1|protein_coding
+ctgA	1400	.	G	A	50	PASS	ANN=A|synonymous_variant|LOW|EDEN|EDEN|transcript|EDEN.1|protein_coding
+ctgA	2000	.	T	C	50	PASS	ANN=C|intron_variant|MODIFIER|EDEN|EDEN|transcript|EDEN.1|protein_coding
+ctgA	3100	.	AT	A	50	PASS	ANN=A|upstream_gene_variant|MODIFIER|X|X|transcript|X.1|protein_coding,A|frameshift_variant|HIGH|EDEN|EDEN|transcript|EDEN.1|protein_coding
+ctgA	3200	.	C	G	50	PASS	ANN=G|synonymous_variant|LOW|EDEN|EDEN|transcript|EDEN.1|protein_coding,G|missense_variant|MODERATE|EDEN|EDEN|transcript|EDEN.2|protein_coding
+ctgA	30000	.	A	T	50	PASS	.

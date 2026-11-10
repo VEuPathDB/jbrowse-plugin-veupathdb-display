@@ -1,0 +1,132 @@
+{
+  "assemblies": [
+    {
+      "name": "volvox",
+      "sequence": {
+        "type": "ReferenceSequenceTrack",
+        "trackId": "volvox_refseq",
+        "adapter": {
+          "type": "TwoBitAdapter",
+          "uri": "http://localhost:3000/test_data/volvox/volvox.2bit"
+        }
+      }
+    }
+  ],
+  "tracks": [
+    {
+      "type": "FeatureTrack",
+      "trackId": "vdb_genes",
+      "name": "Genes (declared: gene record)",
+      "assemblyNames": [
+        "volvox"
+      ],
+      "adapter": {
+        "type": "Gff3Adapter",
+        "uri": "http://localhost:9004/test_config/genes.gff3"
+      },
+      "metadata": {
+        "veupathdb": {
+          "record": {
+            "type": "gene",
+            "id": "{parent|id}",
+            "tables": [
+              "GeneTranscripts",
+              "GOTerms",
+              "PubMed"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "type": "FeatureTrack",
+      "trackId": "vdb_junctions",
+      "name": "Intron junctions (declared: junction record)",
+      "assemblyNames": [
+        "volvox"
+      ],
+      "adapter": {
+        "type": "Gff3Adapter",
+        "uri": "http://localhost:9004/test_config/junctions.gff3"
+      },
+      "metadata": {
+        "veupathdb": {
+          "record": {
+            "type": "junction",
+            "id": "{id}",
+            "tables": [
+              "SampleInfo"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "type": "FeatureTrack",
+      "trackId": "vdb_nrdb",
+      "name": "NRDB proteins (declared: NCBI titles)",
+      "assemblyNames": [
+        "volvox"
+      ],
+      "adapter": {
+        "type": "Gff3Adapter",
+        "uri": "http://localhost:9004/test_config/nrdb.gff3"
+      },
+      "metadata": {
+        "veupathdb": {
+          "ncbiProteinTitles": {
+            "idField": "id"
+          }
+        }
+      }
+    },
+    {
+      "type": "VariantTrack",
+      "trackId": "vdb_variants",
+      "name": "Variants (declared: variation record, effect colour)",
+      "assemblyNames": [
+        "volvox"
+      ],
+      "adapter": {
+        "type": "VcfAdapter",
+        "uri": "http://localhost:9004/test_config/variants.vcf"
+      },
+      "metadata": {
+        "veupathdb": {
+          "record": {
+            "type": "variation",
+            "id": "Variant_{refName}_{position}",
+            "tables": [
+              "PredictedEffects"
+            ]
+          }
+        }
+      },
+      "displayDefaults": {
+        "encoding": {
+          "color": {
+            "value": "jexl:veupathVariantEffectColor(feature)"
+          }
+        }
+      }
+    },
+    {
+      "type": "FeatureTrack",
+      "trackId": "vdb_undeclared",
+      "name": "Genes (undeclared: stock panel)",
+      "assemblyNames": [
+        "volvox"
+      ],
+      "adapter": {
+        "type": "Gff3Adapter",
+        "uri": "http://localhost:9004/test_config/genes.gff3"
+      }
+    }
+  ],
+  "plugins": [
+    {
+      "name": "VeupathdbDisplay",
+      "url": "http://localhost:9004/dist/jbrowse-plugin-veupathdb-display.umd.development.js"
+    }
+  ]
+}
