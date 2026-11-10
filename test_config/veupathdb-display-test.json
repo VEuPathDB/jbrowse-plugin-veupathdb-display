@@ -125,7 +125,7 @@
   ],
   "plugins": [
     {
-      "name": "VeupathdbDisplay",
+      "name": "VEuPathDBDisplay",
       "url": "http://localhost:9004/dist/jbrowse-plugin-veupathdb-display.umd.development.js"
     }
   ]

@@ -1,6 +1,6 @@
 # jbrowse-plugin-veupathdb-display
 
-JBrowse 2 (v5) plugin `VeupathdbDisplay`: VEuPathDB-specific feature details and
+JBrowse 2 (v5) plugin `VEuPathDBDisplay`: VEuPathDB-specific feature details and
 colouring, ported from the JBrowse 1 `functions.conf` callbacks.
 
 ## Track declaration

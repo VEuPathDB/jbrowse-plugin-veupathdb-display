@@ -7,8 +7,8 @@ import type PluginManager from '@jbrowse/core/PluginManager'
 import type { FeaturePanelProps } from '@jbrowse/core/PluginManager'
 import type { ComponentType } from 'react'
 
-export default class VeupathdbDisplayPlugin extends Plugin {
-  name = 'VeupathdbDisplay'
+export default class VEuPathDBDisplayPlugin extends Plugin {
+  name = 'VEuPathDBDisplay'
 
   install(pluginManager: PluginManager) {
     pluginManager.contributeToExtensionPoint(

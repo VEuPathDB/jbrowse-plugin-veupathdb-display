@@ -1,18 +1,18 @@
 import PluginManager from '@jbrowse/core/PluginManager'
 
-import VeupathdbDisplayPlugin from './index'
+import VEuPathDBDisplayPlugin from './index'
 import VeupathdbFeaturePanel from './VeupathdbFeaturePanel'
 import { SYNONYMOUS_COLOR } from './variantEffectColor'
 
 function setup() {
-  const pm = new PluginManager([new VeupathdbDisplayPlugin()])
+  const pm = new PluginManager([new VEuPathDBDisplayPlugin()])
   pm.createPluggableElements()
   pm.configure()
   return pm
 }
 
-test('plugin is named VeupathdbDisplay', () => {
-  expect(new VeupathdbDisplayPlugin().name).toBe('VeupathdbDisplay')
+test('plugin is named VEuPathDBDisplay', () => {
+  expect(new VEuPathDBDisplayPlugin().name).toBe('VEuPathDBDisplay')
 })
 
 test('the feature panel is contributed to Core-extraFeaturePanel', () => {

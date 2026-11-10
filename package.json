@@ -17,7 +17,7 @@
     "port": 9004,
     "jbrowse": {
       "plugin": {
-        "name": "VeupathdbDisplay"
+        "name": "VEuPathDBDisplay"
       }
     }
   },
@@ -35,7 +35,7 @@
     "prepack": "npm-run-all build"
   },
   "jbrowse-plugin": {
-    "name": "VeupathdbDisplay"
+    "name": "VEuPathDBDisplay"
   },
   "peerDependencies": {
     "@jbrowse/core": "^5.0.0-beta.18",
