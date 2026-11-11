@@ -158,7 +158,7 @@
           "displayId": "style_transcripts-LinearBasicDisplay",
           "encoding": {
             "color": {
-              "value": "jexl:veupathProcessedTranscriptColor(feature)"
+              "value": "jexl:veupathProcessedTranscriptColor(feature, 'lightgrey')"
             }
           }
         }

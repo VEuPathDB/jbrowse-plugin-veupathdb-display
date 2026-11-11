@@ -36,15 +36,30 @@ export function strandColor(feature: FeatureLike, plus: string, minus: string) {
 }
 
 const TRANSPOSABLE_ELEMENT_GENE = 'transposable_element_gene'
+const NONCODING_GENE_TYPES = new Set(['ncRNA_gene', 'pseudogene'])
 
-/** processedTranscriptColor; `soterm` is kept for GFFs that carry it */
-export function processedTranscriptColor(feature: FeatureLike): string {
+/**
+ * processedTranscriptColor, plus geneTranscriptType + unprocessedTranscriptColor
+ * when `noncodingColor` is given; `soterm` is kept for GFFs that carry it
+ */
+export function processedTranscriptColor(
+  feature: FeatureLike,
+  noncodingColor?: string,
+): string {
   const parent = parentOf(feature)
   if (parent) {
-    return processedTranscriptColor(parent)
+    return processedTranscriptColor(parent, noncodingColor)
+  }
+  const type = feature.get('type')
+  if (
+    noncodingColor &&
+    typeof type === 'string' &&
+    NONCODING_GENE_TYPES.has(type)
+  ) {
+    return noncodingColor
   }
   if (
-    feature.get('type') === TRANSPOSABLE_ELEMENT_GENE ||
+    type === TRANSPOSABLE_ELEMENT_GENE ||
     feature.get('soterm') === TRANSPOSABLE_ELEMENT_GENE
   ) {
     return strandColor(feature, '#98AFC7', '#C798AF')

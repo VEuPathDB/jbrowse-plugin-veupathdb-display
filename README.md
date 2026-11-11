@@ -66,7 +66,7 @@ the contract producers code against.
 | --- | --- | --- | --- | --- |
 | `veupathVariantEffectColor` | `(feature)` | `INFO.ANN` | `LinearMarkDisplay` `marks[].encoding.color.value` (point mark) | `variantEffectColorFxn` |
 | `veupathStrandColor` | `(feature, plus, minus)` | `strand` | `LinearBasicDisplay` `encoding.color.value` | `processedApolloTranscriptColor` (`'#6666FF', '#F18F74'`), `estColor` (`'deepskyblue', 'pink'`), `nrdbColor` (`'mediumblue', 'crimson'`), `orfColor`, `piggyBacColor` (`'dodgerblue', 'mediumvioletred'`); border callbacks, see below |
-| `veupathProcessedTranscriptColor` | `(feature)` | `type`, `soterm`, `strand`, of the root ancestor (a transcript or exon paints as its gene) | `LinearBasicDisplay` `encoding.color.value` | `processedTranscriptColor` |
+| `veupathProcessedTranscriptColor` | `(feature, noncodingColor?)` | `type`, `soterm`, `strand`, of the root ancestor (a transcript or exon paints as its gene) | `LinearBasicDisplay` `encoding.color.value` | `processedTranscriptColor`, `geneTranscriptType` + `unprocessedTranscriptColor` (`ncRNA_gene` / `pseudogene` paint `noncodingColor` when given, else the strand colours) |
 | `veupathGsnapIntronColor` | `(feature)` | `strand`, `totalscore` | `LinearMarkDisplay` `marks[].encoding.color.value` (link mark) | `gsnapIntronColorFromStrandAndScore` |
 | `veupathGsnapIntronLineThickness` | `(feature)` → px | `totalscore` | `LinearMarkDisplay` `marks[].encoding.strokeWidth.field` (link mark), with the identity scale below | `gsnapIntronLineThickness` |
 | `veupathHaplotypeColor` | `(feature)` | `boundary` | `LinearBasicDisplay` `encoding.color.value` | `haplotypeColorFxn` → `haplotypeColor` |
@@ -116,6 +116,11 @@ equal to its range makes the returned px the drawn px.
 - Border colour (`processedTranscriptBorderColor`, `estBorderColor`):
   `LinearBasicDisplay` has a fill channel only; outlines take the theme's
   stroke. `veupathStrandColor` reproduces them should a slot appear.
+- Non-coding gene outline: JBrowse 1 filled `ncRNA_gene` and `pseudogene`
+  transcripts white (`unprocessedTranscriptColor`) inside the strand-coloured
+  border. With no border in v5 a white fill would vanish, so
+  `veupathProcessedTranscriptColor` takes the fill as `noncodingColor`
+  instead.
 - Junction post height (`gsnapIntronPostHeight`): a link mark has `y`, `row`,
   `color` and `strokeWidth` channels and no posts. Not ported.
 

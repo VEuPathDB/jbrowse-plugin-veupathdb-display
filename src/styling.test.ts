@@ -84,6 +84,69 @@ describe('processedTranscriptColor', () => {
     const mrna = { get: () => -1, parent: () => gene }
     expect(processedTranscriptColor(mrna)).toBe('#98AFC7')
   })
+
+  describe('noncodingColor', () => {
+    const NC = 'lightgrey'
+    const withChildren = (data: Record<string, unknown>) => {
+      const gene = feature(data)
+      const transcript = feature({ type: 'ncRNA', strand: data.strand }, gene)
+      return feature({ type: 'exon', strand: data.strand }, transcript)
+    }
+    const genes = ['ncRNA_gene', 'pseudogene'].flatMap(type => [
+      [type, 1, '#000080'] as const,
+      [type, -1, '#aa3311'] as const,
+    ])
+
+    test.each(genes)('%s, strand %p, with the argument', (type, strand) => {
+      expect(processedTranscriptColor(feature({ type, strand }), NC)).toBe(NC)
+    })
+
+    test.each(genes)(
+      '%s, strand %p, with the argument, through gene>transcript>exon',
+      (type, strand) => {
+        expect(
+          processedTranscriptColor(withChildren({ type, strand }), NC),
+        ).toBe(NC)
+      },
+    )
+
+    test.each(genes)(
+      '%s, strand %p, without the argument keeps the strand colour',
+      (type, strand, expected) => {
+        expect(processedTranscriptColor(feature({ type, strand }))).toBe(
+          expected,
+        )
+        expect(processedTranscriptColor(withChildren({ type, strand }))).toBe(
+          expected,
+        )
+      },
+    )
+
+    test.each([
+      [
+        'protein_coding_gene',
+        { type: 'protein_coding_gene' },
+        '#000080',
+        '#aa3311',
+      ],
+      ['TE gene', { type: TE }, '#98AFC7', '#C798AF'],
+      ['TE by soterm', { type: 'gene', soterm: TE }, '#98AFC7', '#C798AF'],
+    ])('%s ignores the argument', (_, data, plus, minus) => {
+      expect(
+        processedTranscriptColor(feature({ ...data, strand: 1 }), NC),
+      ).toBe(plus)
+      expect(
+        processedTranscriptColor(withChildren({ ...data, strand: -1 }), NC),
+      ).toBe(minus)
+    })
+
+    test('an ncRNA_gene typed child under a coding gene does not take it', () => {
+      const gene = feature({ type: 'protein_coding_gene', strand: 1 })
+      expect(
+        processedTranscriptColor(feature({ type: 'ncRNA_gene' }, gene), NC),
+      ).toBe('#000080')
+    })
+  })
 })
 
 describe('gsnapIntronColor', () => {

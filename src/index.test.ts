@@ -59,6 +59,34 @@ test('veupathStrandColor takes its colours as arguments', () => {
   ).toBe('pink')
 })
 
+test('veupathProcessedTranscriptColor passes noncodingColor through jexl', () => {
+  const gene = new SimpleFeature({
+    id: 'nc',
+    data: {
+      refName: 'ctgA',
+      start: 0,
+      end: 100,
+      strand: -1,
+      type: 'pseudogene',
+      subfeatures: [{ start: 0, end: 100, strand: -1, type: 'transcript' }],
+    },
+  })
+  const transcript = gene.children()![0]!
+  const pm = setup()
+  expect(
+    pm.jexl.eval(
+      "veupathProcessedTranscriptColor(feature, 'lightgrey')",
+      buildJexlContext({ feature: transcript }),
+    ),
+  ).toBe('lightgrey')
+  expect(
+    pm.jexl.eval(
+      'veupathProcessedTranscriptColor(feature)',
+      buildJexlContext({ feature: transcript }),
+    ),
+  ).toBe('#aa3311')
+})
+
 test('veupathProcessedTranscriptColor walks a proxied feature to its gene', () => {
   const gene = new SimpleFeature({
     id: 'gene',
