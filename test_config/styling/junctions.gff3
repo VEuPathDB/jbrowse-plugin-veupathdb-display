@@ -1,0 +1,16 @@
+##gff-version 3
+ctgA	gsnap	intron	1000	1400	.	+	.	ID=j_p_3;Name=+ 3 rgb 219 219 255 2px;totalscore=3
+ctgA	gsnap	intron	1600	2000	.	+	.	ID=j_p_10;Name=+ 10 rgb 182 182 255 2px;totalscore=10
+ctgA	gsnap	intron	2200	2600	.	+	.	ID=j_p_50;Name=+ 50 rgb 146 146 255 2px;totalscore=50
+ctgA	gsnap	intron	2800	3200	.	+	.	ID=j_p_200;Name=+ 200 rgb 109 109 255 2px;totalscore=200
+ctgA	gsnap	intron	3400	3800	.	+	.	ID=j_p_800;Name=+ 800 rgb 73 73 255 2px;totalscore=800
+ctgA	gsnap	intron	4000	4400	.	+	.	ID=j_p_5000;Name=+ 5000 rgb 36 36 255 4px;totalscore=5000
+ctgA	gsnap	intron	4600	5000	.	+	.	ID=j_p_20000;Name=+ 20000 rgb 36 36 255 6px;totalscore=20000
+ctgA	gsnap	intron	5200	5600	.	+	.	ID=j_p_none;Name=+ no score rgb 36 36 255 6px
+ctgA	gsnap	intron	6000	6400	.	-	.	ID=j_m_3;Name=- 3 rgb 255 219 219 2px;totalscore=3
+ctgA	gsnap	intron	6600	7000	.	-	.	ID=j_m_10;Name=- 10 rgb 255 182 182 2px;totalscore=10
+ctgA	gsnap	intron	7200	7600	.	-	.	ID=j_m_50;Name=- 50 rgb 255 146 146 2px;totalscore=50
+ctgA	gsnap	intron	7800	8200	.	-	.	ID=j_m_200;Name=- 200 rgb 255 109 109 2px;totalscore=200
+ctgA	gsnap	intron	8400	8800	.	-	.	ID=j_m_800;Name=- 800 rgb 255 73 73 2px;totalscore=800
+ctgA	gsnap	intron	9000	9400	.	-	.	ID=j_m_5000;Name=- 5000 rgb 255 36 36 4px;totalscore=5000
+ctgA	gsnap	intron	9600	10000	.	-	.	ID=j_m_20000;Name=- 20000 rgb 255 36 36 6px;totalscore=20000

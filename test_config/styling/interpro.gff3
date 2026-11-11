@@ -1,0 +1,19 @@
+##gff-version 3
+ctgA	CDD	protein_match	1000	1400	.	+	.	ID=ip_1;Name=CDD dodgerblue
+ctgA	Coils	protein_match	1600	2000	.	+	.	ID=ip_2;Name=Coils purple
+ctgA	FunFam	protein_match	2200	2600	.	+	.	ID=ip_3;Name=FunFam darkblue
+ctgA	Gene3D	protein_match	2800	3200	.	+	.	ID=ip_4;Name=Gene3D red
+ctgA	Hamap	protein_match	3400	3800	.	+	.	ID=ip_5;Name=Hamap violet
+ctgA	MobiDBLite	protein_match	4000	4400	.	+	.	ID=ip_6;Name=MobiDBLite maroon
+ctgA	NCBIfam	protein_match	4600	5000	.	+	.	ID=ip_7;Name=NCBIfam slategray
+ctgA	PANTHER	protein_match	5200	5600	.	+	.	ID=ip_8;Name=PANTHER lightgray
+ctgA	Pfam	protein_match	5800	6200	.	+	.	ID=ip_9;Name=Pfam blue
+ctgA	PIRSF	protein_match	6400	6800	.	+	.	ID=ip_10;Name=PIRSF orange
+ctgA	PIRSR	protein_match	7000	7400	.	+	.	ID=ip_11;Name=PIRSR gold
+ctgA	PRINTS	protein_match	7600	8000	.	+	.	ID=ip_12;Name=PRINTS maize #fbec5d
+ctgA	ProSitePatterns	protein_match	8200	8600	.	+	.	ID=ip_13;Name=ProSitePatterns brown
+ctgA	ProSiteProfiles	protein_match	8800	9200	.	+	.	ID=ip_14;Name=ProSiteProfiles khaki
+ctgA	SFLD	protein_match	9400	9800	.	+	.	ID=ip_15;Name=SFLD mediumseagreen
+ctgA	SMART	protein_match	10000	10400	.	+	.	ID=ip_16;Name=SMART cyan
+ctgA	SUPERFAMILY	protein_match	10600	11000	.	+	.	ID=ip_17;Name=SUPERFAMILY seagreen
+ctgA	Prosite	protein_match	11200	11600	.	+	.	ID=ip_18;Name=unknown source black

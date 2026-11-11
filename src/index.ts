@@ -1,11 +1,37 @@
 import Plugin from '@jbrowse/core/Plugin'
 
 import VeupathdbFeaturePanel from './VeupathdbFeaturePanel'
+import {
+  bindingSiteColor,
+  gsnapIntronColor,
+  gsnapIntronLineThickness,
+  haplotypeColor,
+  iedbColor,
+  interproColor,
+  postTranslationalModColor,
+  processedTranscriptColor,
+  signalpColor,
+  strandColor,
+} from './styling'
 import { variantEffectColor } from './variantEffectColor'
 
 import type PluginManager from '@jbrowse/core/PluginManager'
 import type { FeaturePanelProps } from '@jbrowse/core/PluginManager'
 import type { ComponentType } from 'react'
+
+export const JEXL_FUNCTIONS = {
+  veupathVariantEffectColor: variantEffectColor,
+  veupathStrandColor: strandColor,
+  veupathProcessedTranscriptColor: processedTranscriptColor,
+  veupathGsnapIntronColor: gsnapIntronColor,
+  veupathGsnapIntronLineThickness: gsnapIntronLineThickness,
+  veupathHaplotypeColor: haplotypeColor,
+  veupathBindingSiteColor: bindingSiteColor,
+  veupathInterproColor: interproColor,
+  veupathSignalpColor: signalpColor,
+  veupathIedbColor: iedbColor,
+  veupathPostTranslationalModColor: postTranslationalModColor,
+}
 
 export default class VEuPathDBDisplayPlugin extends Plugin {
   name = 'VEuPathDBDisplay'
@@ -20,9 +46,8 @@ export default class VEuPathDBDisplayPlugin extends Plugin {
   }
 
   configure(pluginManager: PluginManager) {
-    pluginManager.jexl.addFunction(
-      'veupathVariantEffectColor',
-      variantEffectColor,
-    )
+    for (const [name, fn] of Object.entries(JEXL_FUNCTIONS)) {
+      pluginManager.jexl.addFunction(name, fn)
+    }
   }
 }

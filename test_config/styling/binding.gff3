@@ -1,0 +1,10 @@
+##gff-version 3
+ctgA	tfbs	binding_site	1000	1400	.	+	.	ID=b_p_1;Name=+ 1e-6 mediumblue;Score=1e-6
+ctgA	tfbs	binding_site	1600	2000	.	+	.	ID=b_p_2;Name=+ 3e-5 royalblue;Score=3e-5
+ctgA	tfbs	binding_site	2200	2600	.	+	.	ID=b_p_3;Name=+ 8e-5 dodgerblue;Score=8e-5
+ctgA	tfbs	binding_site	2800	3200	.	+	.	ID=b_p_4;Name=+ 1e-3 skyblue;Score=1e-3
+ctgA	tfbs	binding_site	3400	3800	.	+	.	ID=b_p_none;Name=+ no Score skyblue
+ctgA	tfbs	binding_site	4000	4400	.	-	.	ID=b_m_1;Name=- 1e-6 darkred;Score=1e-6
+ctgA	tfbs	binding_site	4600	5000	.	-	.	ID=b_m_2;Name=- 3e-5 crimson;Score=3e-5
+ctgA	tfbs	binding_site	5200	5600	.	-	.	ID=b_m_3;Name=- 8e-5 red;Score=8e-5
+ctgA	tfbs	binding_site	5800	6200	.	-	.	ID=b_m_4;Name=- 1e-3 tomato;Score=1e-3

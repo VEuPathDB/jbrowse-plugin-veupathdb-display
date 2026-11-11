@@ -1,0 +1,7 @@
+##gff-version 3
+ctgA	SignalP-4.1	signal_peptide	1000	1400	.	+	.	ID=sp_1;Name=SignalP-4.1 sandybrown
+ctgA	SignalP-5.0	signal_peptide	1600	2000	.	+	.	ID=sp_2;Name=SignalP-5.0 seagreen
+ctgA	SignalP-6.0	n-region	2200	2600	.	+	.	ID=sp_3;Name=n-region grey
+ctgA	SignalP-6.0	h-region	2800	3200	.	+	.	ID=sp_4;Name=h-region blue
+ctgA	SignalP-6.0	c-region	3400	3800	.	+	.	ID=sp_5;Name=c-region red
+ctgA	SignalP-6.0	signal_peptide	4000	4400	.	+	.	ID=sp_6;Name=other type red

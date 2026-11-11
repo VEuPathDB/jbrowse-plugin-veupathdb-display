@@ -121,6 +121,200 @@
         "type": "Gff3Adapter",
         "uri": "http://localhost:9004/test_config/genes.gff3"
       }
+    },
+    {
+      "type": "FeatureTrack",
+      "trackId": "style_strand",
+      "name": "Style: veupathStrandColor (est)",
+      "assemblyNames": ["volvox"],
+      "adapter": {
+        "type": "Gff3Adapter",
+        "uri": "http://localhost:9004/test_config/styling/strand.gff3"
+      },
+      "displays": [
+        {
+          "type": "LinearBasicDisplay",
+          "displayId": "style_strand-LinearBasicDisplay",
+          "encoding": {
+            "color": {
+              "value": "jexl:veupathStrandColor(feature, 'deepskyblue', 'pink')"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "FeatureTrack",
+      "trackId": "style_transcripts",
+      "name": "Style: veupathProcessedTranscriptColor",
+      "assemblyNames": ["volvox"],
+      "adapter": {
+        "type": "Gff3Adapter",
+        "uri": "http://localhost:9004/test_config/styling/transcripts.gff3"
+      },
+      "displays": [
+        {
+          "type": "LinearBasicDisplay",
+          "displayId": "style_transcripts-LinearBasicDisplay",
+          "encoding": {
+            "color": {
+              "value": "jexl:veupathProcessedTranscriptColor(feature, 'lightgrey')"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "FeatureTrack",
+      "trackId": "style_junctions",
+      "name": "Style: veupathGsnapIntronColor + LineThickness",
+      "assemblyNames": ["volvox"],
+      "adapter": {
+        "type": "Gff3Adapter",
+        "uri": "http://localhost:9004/test_config/styling/junctions.gff3"
+      },
+      "displays": [
+        {
+          "type": "LinearMarkDisplay",
+          "displayId": "style_junctions-LinearMarkDisplay",
+          "marks": [
+            {
+              "mark": "link",
+              "encoding": {
+                "color": {
+                  "value": "jexl:veupathGsnapIntronColor(feature)"
+                },
+                "strokeWidth": {
+                  "field": "jexl:veupathGsnapIntronLineThickness(feature)",
+                  "scale": {
+                    "type": "linear",
+                    "domainMin": 2,
+                    "domainMax": 6,
+                    "range": [2, 6]
+                  }
+                }
+              }
+            },
+            { "mark": "text", "encoding": { "text": "name" } }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "FeatureTrack",
+      "trackId": "style_haplotype",
+      "name": "Style: veupathHaplotypeColor",
+      "assemblyNames": ["volvox"],
+      "adapter": {
+        "type": "Gff3Adapter",
+        "uri": "http://localhost:9004/test_config/styling/haplotype.gff3"
+      },
+      "displays": [
+        {
+          "type": "LinearBasicDisplay",
+          "displayId": "style_haplotype-LinearBasicDisplay",
+          "encoding": {
+            "color": { "value": "jexl:veupathHaplotypeColor(feature)" }
+          }
+        }
+      ]
+    },
+    {
+      "type": "FeatureTrack",
+      "trackId": "style_binding",
+      "name": "Style: veupathBindingSiteColor",
+      "assemblyNames": ["volvox"],
+      "adapter": {
+        "type": "Gff3Adapter",
+        "uri": "http://localhost:9004/test_config/styling/binding.gff3"
+      },
+      "displays": [
+        {
+          "type": "LinearBasicDisplay",
+          "displayId": "style_binding-LinearBasicDisplay",
+          "encoding": {
+            "color": { "value": "jexl:veupathBindingSiteColor(feature)" }
+          }
+        }
+      ]
+    },
+    {
+      "type": "FeatureTrack",
+      "trackId": "style_interpro",
+      "name": "Style: veupathInterproColor",
+      "assemblyNames": ["volvox"],
+      "adapter": {
+        "type": "Gff3Adapter",
+        "uri": "http://localhost:9004/test_config/styling/interpro.gff3"
+      },
+      "displays": [
+        {
+          "type": "LinearBasicDisplay",
+          "displayId": "style_interpro-LinearBasicDisplay",
+          "encoding": {
+            "color": { "value": "jexl:veupathInterproColor(feature)" }
+          }
+        }
+      ]
+    },
+    {
+      "type": "FeatureTrack",
+      "trackId": "style_signalp",
+      "name": "Style: veupathSignalpColor",
+      "assemblyNames": ["volvox"],
+      "adapter": {
+        "type": "Gff3Adapter",
+        "uri": "http://localhost:9004/test_config/styling/signalp.gff3"
+      },
+      "displays": [
+        {
+          "type": "LinearBasicDisplay",
+          "displayId": "style_signalp-LinearBasicDisplay",
+          "encoding": {
+            "color": { "value": "jexl:veupathSignalpColor(feature)" }
+          }
+        }
+      ]
+    },
+    {
+      "type": "FeatureTrack",
+      "trackId": "style_iedb",
+      "name": "Style: veupathIedbColor",
+      "assemblyNames": ["volvox"],
+      "adapter": {
+        "type": "Gff3Adapter",
+        "uri": "http://localhost:9004/test_config/styling/iedb.gff3"
+      },
+      "displays": [
+        {
+          "type": "LinearBasicDisplay",
+          "displayId": "style_iedb-LinearBasicDisplay",
+          "encoding": {
+            "color": { "value": "jexl:veupathIedbColor(feature)" }
+          }
+        }
+      ]
+    },
+    {
+      "type": "FeatureTrack",
+      "trackId": "style_ptm",
+      "name": "Style: veupathPostTranslationalModColor",
+      "assemblyNames": ["volvox"],
+      "adapter": {
+        "type": "Gff3Adapter",
+        "uri": "http://localhost:9004/test_config/styling/ptm.gff3"
+      },
+      "displays": [
+        {
+          "type": "LinearBasicDisplay",
+          "displayId": "style_ptm-LinearBasicDisplay",
+          "encoding": {
+            "color": {
+              "value": "jexl:veupathPostTranslationalModColor(feature)"
+            }
+          }
+        }
+      ]
     }
   ],
   "plugins": [
