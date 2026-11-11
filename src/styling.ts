@@ -35,13 +35,18 @@ export function strandColor(feature: FeatureLike, plus: string, minus: string) {
   return isPlusStrand(feature) ? plus : minus
 }
 
-/** processedTranscriptColor */
+const TRANSPOSABLE_ELEMENT_GENE = 'transposable_element_gene'
+
+/** processedTranscriptColor; `soterm` is kept for GFFs that carry it */
 export function processedTranscriptColor(feature: FeatureLike): string {
   const parent = parentOf(feature)
   if (parent) {
     return processedTranscriptColor(parent)
   }
-  if (feature.get('soterm') === 'transposable_element_gene') {
+  if (
+    feature.get('type') === TRANSPOSABLE_ELEMENT_GENE ||
+    feature.get('soterm') === TRANSPOSABLE_ELEMENT_GENE
+  ) {
     return strandColor(feature, '#98AFC7', '#C798AF')
   }
   return strandColor(feature, '#000080', '#aa3311')

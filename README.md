@@ -64,9 +64,9 @@ the contract producers code against.
 
 | function | signature | attributes read | v5 display and slot | replaces (JBrowse 1) |
 | --- | --- | --- | --- | --- |
-| `veupathVariantEffectColor` | `(feature)` | `INFO.ANN` | `LinearVariantDisplay` `encoding.color.value` | `variantEffectColorFxn` |
+| `veupathVariantEffectColor` | `(feature)` | `INFO.ANN` | `LinearMarkDisplay` `marks[].encoding.color.value` (point mark) | `variantEffectColorFxn` |
 | `veupathStrandColor` | `(feature, plus, minus)` | `strand` | `LinearBasicDisplay` `encoding.color.value` | `processedApolloTranscriptColor` (`'#6666FF', '#F18F74'`), `estColor` (`'deepskyblue', 'pink'`), `nrdbColor` (`'mediumblue', 'crimson'`), `orfColor`, `piggyBacColor` (`'dodgerblue', 'mediumvioletred'`); border callbacks, see below |
-| `veupathProcessedTranscriptColor` | `(feature)` | `strand`, `soterm`, ancestors | `LinearBasicDisplay` `encoding.color.value` | `processedTranscriptColor` |
+| `veupathProcessedTranscriptColor` | `(feature)` | `type`, `soterm`, `strand`, of the root ancestor (a transcript or exon paints as its gene) | `LinearBasicDisplay` `encoding.color.value` | `processedTranscriptColor` |
 | `veupathGsnapIntronColor` | `(feature)` | `strand`, `totalscore` | `LinearMarkDisplay` `marks[].encoding.color.value` (link mark) | `gsnapIntronColorFromStrandAndScore` |
 | `veupathGsnapIntronLineThickness` | `(feature)` → px | `totalscore` | `LinearMarkDisplay` `marks[].encoding.strokeWidth.field` (link mark), with the identity scale below | `gsnapIntronLineThickness` |
 | `veupathHaplotypeColor` | `(feature)` | `boundary` | `LinearBasicDisplay` `encoding.color.value` | `haplotypeColorFxn` → `haplotypeColor` |
@@ -78,8 +78,8 @@ the contract producers code against.
 
 `encoding.color.value` is the `FeatureColor` slot of
 `@jbrowse/display-kit` `featureEncodingConfigSchema` (`maybeColor`,
-`contextVariable: ['feature']`); the link mark's `color.value` is
-`MarkColor.value` and `strokeWidth.field` a `featureField`, which evaluates a
+`contextVariable: ['feature']`); a point or link mark's `color.value` is
+`MarkColor.value`, and a link's `strokeWidth.field` a `featureField`, which evaluates a
 `jexl:` expression with `feature` in scope.
 
 ```json
@@ -100,8 +100,6 @@ equal to its range makes the returned px the drawn px.
 
 ### Missing attributes and deviations
 
-- `soterm` absent: the strand colour (`#000080` / `#aa3311`). An ancestor's
-  colour wins, so a transcript or exon paints as its gene.
 - `totalscore` absent: the darkest colour bin and the 6 px stroke, as in
   JBrowse 1.
 - `score2` (GFF3 `Score=`; the score column is not read) absent: the weakest

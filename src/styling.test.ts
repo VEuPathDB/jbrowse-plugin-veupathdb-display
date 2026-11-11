@@ -32,30 +32,44 @@ describe('strandColor', () => {
 })
 
 describe('processedTranscriptColor', () => {
-  test.each([
-    [1, '#000080'],
-    [-1, '#aa3311'],
-  ])('strand %p without soterm is the default', (strand, expected) => {
-    expect(processedTranscriptColor(feature({ strand }))).toBe(expected)
+  const TE = 'transposable_element_gene'
+  const kinds: [string, Record<string, unknown>, string, string][] = [
+    ['TE by type', { type: TE }, '#98AFC7', '#C798AF'],
+    ['TE by soterm only', { type: 'gene', soterm: TE }, '#98AFC7', '#C798AF'],
+    ['neither', { type: 'gene' }, '#000080', '#aa3311'],
+    [
+      'neither, other soterm',
+      { type: 'protein_coding_gene', soterm: 'protein_coding' },
+      '#000080',
+      '#aa3311',
+    ],
+  ]
+  const cases = kinds.flatMap(([kind, data, plus, minus]) => [
+    [kind, 1, data, plus] as const,
+    [kind, -1, data, minus] as const,
+  ])
+
+  test.each(cases)('%s, strand %p', (_, strand, data, expected) => {
+    expect(processedTranscriptColor(feature({ ...data, strand }))).toBe(
+      expected,
+    )
   })
 
-  test.each([
-    [1, '#98AFC7'],
-    [-1, '#C798AF'],
-  ])('transposable_element_gene on strand %p', (strand, expected) => {
-    expect(
-      processedTranscriptColor(
-        feature({ strand, soterm: 'transposable_element_gene' }),
-      ),
-    ).toBe(expected)
-  })
+  test.each(cases)(
+    '%s, strand %p, through a child',
+    (_, strand, data, expected) => {
+      const gene = feature({ ...data, strand })
+      const mrna = feature({ type: 'mRNA', strand: -strand }, gene)
+      const cds = feature({ type: 'CDS', strand: -strand }, mrna)
+      expect(processedTranscriptColor(cds)).toBe(expected)
+    },
+  )
 
-  test('another soterm is the default', () => {
-    expect(
-      processedTranscriptColor(
-        feature({ strand: 1, soterm: 'protein_coding' }),
-      ),
-    ).toBe('#000080')
+  test('a child of type transposable_element_gene does not colour itself', () => {
+    const gene = feature({ type: 'gene', strand: 1 })
+    expect(processedTranscriptColor(feature({ type: TE }, gene))).toBe(
+      '#000080',
+    )
   })
 
   test('a child takes its root ancestor colour (parent as a property)', () => {

@@ -15,3 +15,7 @@ ctgA	synthetic	gene	5800	6800	.	-	.	ID=nosoterm_minus;Name=no soterm minus #aa33
 ctgA	synthetic	mRNA	5800	6800	.	-	.	ID=nosoterm_minus.1;Parent=nosoterm_minus
 ctgA	synthetic	CDS	5800	6200	.	-	0	Parent=nosoterm_minus.1
 ctgA	synthetic	CDS	6400	6800	.	-	0	Parent=nosoterm_minus.1
+ctgA	synthetic	transposable_element_gene	7400	8400	.	+	.	ID=te_type_plus;Name=TE by type plus #98AFC7
+ctgA	synthetic	mRNA	7400	8400	.	+	.	ID=te_type_plus.1;Parent=te_type_plus
+ctgA	synthetic	CDS	7400	7800	.	+	0	Parent=te_type_plus.1
+ctgA	synthetic	CDS	8000	8400	.	+	0	Parent=te_type_plus.1
