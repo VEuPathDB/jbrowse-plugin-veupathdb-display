@@ -1,0 +1,7 @@
+##gff-version 3
+ctgA	ms	modified_amino_acid_feature	1000	1400	.	+	.	ID=m_1;Name=phosphorylation dodgerblue;modificationType=phosphorylation_site
+ctgA	ms	modified_amino_acid_feature	1600	2000	.	+	.	ID=m_2;Name=cysteine deepskyblue;modificationType=modified_L_cysteine
+ctgA	ms	modified_amino_acid_feature	2200	2600	.	+	.	ID=m_3;Name=iodoacetamide blueviolet;modificationType=iodoacetamide_derivatized_residue
+ctgA	ms	modified_amino_acid_feature	2800	3200	.	+	.	ID=m_4;Name=methionine steelblue;modificationType=modified_L_methionine
+ctgA	ms	modified_amino_acid_feature	3400	3800	.	+	.	ID=m_5;Name=other blue;modificationType=acetylation_site
+ctgA	ms	modified_amino_acid_feature	4000	4400	.	+	.	ID=m_6;Name=no type blue

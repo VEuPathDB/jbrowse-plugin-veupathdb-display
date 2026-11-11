@@ -1,0 +1,4 @@
+##gff-version 3
+ctgA	haplotype	haplotype_block	1000	1400	.	.	.	ID=h_lib;Name=Liberal darkseagreen;boundary=Liberal
+ctgA	haplotype	haplotype_block	1600	2000	.	.	.	ID=h_con;Name=Conservative darkgreen;boundary=Conservative
+ctgA	haplotype	haplotype_block	2200	2600	.	.	.	ID=h_none;Name=no boundary darkgreen

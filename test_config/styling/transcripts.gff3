@@ -1,0 +1,17 @@
+##gff-version 3
+ctgA	synthetic	gene	1000	2000	.	+	.	ID=te_plus;Name=TE plus #98AFC7;soTerm=transposable_element_gene
+ctgA	synthetic	mRNA	1000	2000	.	+	.	ID=te_plus.1;Parent=te_plus
+ctgA	synthetic	CDS	1000	1400	.	+	0	Parent=te_plus.1
+ctgA	synthetic	CDS	1600	2000	.	+	0	Parent=te_plus.1
+ctgA	synthetic	gene	2600	3600	.	-	.	ID=te_minus;Name=TE minus #C798AF;soTerm=transposable_element_gene
+ctgA	synthetic	mRNA	2600	3600	.	-	.	ID=te_minus.1;Parent=te_minus
+ctgA	synthetic	CDS	2600	3000	.	-	0	Parent=te_minus.1
+ctgA	synthetic	CDS	3200	3600	.	-	0	Parent=te_minus.1
+ctgA	synthetic	gene	4200	5200	.	+	.	ID=pc_plus;Name=plus navy #000080;soTerm=protein_coding_gene
+ctgA	synthetic	mRNA	4200	5200	.	+	.	ID=pc_plus.1;Parent=pc_plus
+ctgA	synthetic	CDS	4200	4600	.	+	0	Parent=pc_plus.1
+ctgA	synthetic	CDS	4800	5200	.	+	0	Parent=pc_plus.1
+ctgA	synthetic	gene	5800	6800	.	-	.	ID=nosoterm_minus;Name=no soterm minus #aa3311
+ctgA	synthetic	mRNA	5800	6800	.	-	.	ID=nosoterm_minus.1;Parent=nosoterm_minus
+ctgA	synthetic	CDS	5800	6200	.	-	0	Parent=nosoterm_minus.1
+ctgA	synthetic	CDS	6400	6800	.	-	0	Parent=nosoterm_minus.1

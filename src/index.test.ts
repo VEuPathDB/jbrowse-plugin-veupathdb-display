@@ -1,6 +1,10 @@
 import PluginManager from '@jbrowse/core/PluginManager'
 
-import VEuPathDBDisplayPlugin from './index'
+import SimpleFeature, {
+  buildJexlContext,
+} from '@jbrowse/core/util/simpleFeature'
+
+import VEuPathDBDisplayPlugin, { JEXL_FUNCTIONS } from './index'
 import VeupathdbFeaturePanel from './VeupathdbFeaturePanel'
 import { SYNONYMOUS_COLOR } from './variantEffectColor'
 
@@ -34,4 +38,44 @@ test('veupathVariantEffectColor is a jexl function', () => {
   expect(pm.jexl.eval('veupathVariantEffectColor(feature)', { feature })).toBe(
     SYNONYMOUS_COLOR,
   )
+})
+
+test.each(Object.keys(JEXL_FUNCTIONS))('%s is a jexl function', name => {
+  expect(setup().jexl._grammar.functions[name]).toBe(
+    JEXL_FUNCTIONS[name as keyof typeof JEXL_FUNCTIONS],
+  )
+})
+
+test('veupathStrandColor takes its colours as arguments', () => {
+  const feature = new SimpleFeature({
+    id: 'est',
+    data: { refName: 'ctgA', start: 0, end: 10, strand: -1 },
+  })
+  expect(
+    setup().jexl.eval(
+      "veupathStrandColor(feature, 'deepskyblue', 'pink')",
+      buildJexlContext({ feature }),
+    ),
+  ).toBe('pink')
+})
+
+test('veupathProcessedTranscriptColor walks a proxied feature to its gene', () => {
+  const gene = new SimpleFeature({
+    id: 'gene',
+    data: {
+      refName: 'ctgA',
+      start: 0,
+      end: 100,
+      strand: 1,
+      soterm: 'transposable_element_gene',
+      subfeatures: [{ start: 0, end: 100, strand: 1, type: 'mRNA' }],
+    },
+  })
+  const mrna = gene.children()![0]!
+  expect(
+    setup().jexl.eval(
+      'veupathProcessedTranscriptColor(feature)',
+      buildJexlContext({ feature: mrna }),
+    ),
+  ).toBe('#98AFC7')
 })
