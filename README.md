@@ -65,7 +65,7 @@ the contract producers code against.
 | function | signature | attributes read | v5 display and slot | replaces (JBrowse 1) |
 | --- | --- | --- | --- | --- |
 | `veupathVariantEffectColor` | `(feature)` | `INFO.ANN` | `LinearMarkDisplay` `marks[].encoding.color.value` (point mark) | `variantEffectColorFxn` |
-| `veupathStrandColor` | `(feature, plus, minus)` | `strand` | `LinearBasicDisplay` `encoding.color.value` | `processedApolloTranscriptColor` (`'#6666FF', '#F18F74'`), `estColor` (`'deepskyblue', 'pink'`), `nrdbColor` (`'mediumblue', 'crimson'`), `orfColor`, `piggyBacColor` (`'dodgerblue', 'mediumvioletred'`); border callbacks, see below |
+| `veupathStrandColor` | `(feature, plus, minus, unstranded?)` | `strand` | `LinearBasicDisplay` `encoding.color.value` | `processedApolloTranscriptColor` (`'#6666FF', '#F18F74'`), `estColor` (`'deepskyblue', 'pink'`), `nrdbColor` (`'mediumblue', 'crimson'`), `orfColor`, `piggyBacColor` (`'dodgerblue', 'mediumvioletred'`), `scaffoldColor` (with `unstranded` for gaps); border callbacks, see below |
 | `veupathProcessedTranscriptColor` | `(feature, noncodingColor?)` | `type`, `soterm`, `strand`, of the root ancestor (a transcript or exon paints as its gene) | `LinearBasicDisplay` `encoding.color.value` | `processedTranscriptColor`, `geneTranscriptType` + `unprocessedTranscriptColor` (`ncRNA_gene` / `pseudogene` paint `noncodingColor` when given, else the strand colours) |
 | `veupathGsnapIntronColor` | `(feature)` | `strand`, `totalscore` | `LinearMarkDisplay` `marks[].encoding.color.value` (link mark) | `gsnapIntronColorFromStrandAndScore` |
 | `veupathGsnapIntronLineThickness` | `(feature)` → px | `totalscore` | `LinearMarkDisplay` `marks[].encoding.strokeWidth.field` (link mark), with the identity scale below | `gsnapIntronLineThickness` |
@@ -75,6 +75,7 @@ the contract producers code against.
 | `veupathSignalpColor` | `(feature)` | `source`, `type` | `LinearBasicDisplay` `encoding.color.value` | `signalpColorFxn` |
 | `veupathIedbColor` | `(feature)` | `matchesfulllengthprotein`, `mismatches` | `LinearBasicDisplay` `encoding.color.value` | `iedbColorFxn` → `iedbColor` |
 | `veupathPostTranslationalModColor` | `(feature)` | `modificationtype` | `LinearBasicDisplay` `encoding.color.value` | `unifiedPostTranslationalModColor` |
+| `veupathLinkDetails` | `(feature, type, label, urlPrefix, field)` → `{ [label]: <a> }` or `{}` | `type`, `field` (lowercased) | track `formatDetails.feature` | `scaffoldDetails` |
 
 `encoding.color.value` is the `FeatureColor` slot of
 `@jbrowse/display-kit` `featureEncodingConfigSchema` (`maybeColor`,
@@ -98,6 +99,17 @@ the contract producers code against.
 A link's `strokeWidth` field always passes through a scale; the pinned domain
 equal to its range makes the returned px the drawn px.
 
+`veupathLinkDetails` returns the fields `formatDetails.feature` merges over the
+clicked feature (`@jbrowse/core` `configuration/formatDetailsConfigSchema.ts`):
+one row, `label`, holding a link to `urlPrefix` + the URI-encoded `field` value,
+opening in a new tab, when the feature's `type` is `type` and the field is
+present; otherwise `{}`, so other features keep the stock panel.
+
+```json
+{ "formatDetails": { "feature":
+  "jexl:veupathLinkDetails(feature, 'scaffold', 'NCBI', 'https://www.ncbi.nlm.nih.gov/nuccore/', 'name')" } }
+```
+
 ### Missing attributes and deviations
 
 - `totalscore` absent: the darkest colour bin and the 6 px stroke, as in
@@ -107,7 +119,8 @@ equal to its range makes the returned px the drawn px.
 - `boundary` absent: `darkgreen`. `matchesfulllengthprotein` and `mismatches`
   absent: `rgba(30,130,76,0.2)`. `modificationtype` absent: `blue`.
   `source` unknown: `black`. Strand absent or 0: the minus colour, except
-  `veupathGsnapIntronColor`, where it is the plus ramp.
+  `veupathGsnapIntronColor`, where it is the plus ramp, and
+  `veupathStrandColor` given `unstranded`, which paints that.
 - InterPro `PRINTS`: JBrowse 1 returned `maize`, which is not a CSS colour;
   this returns `#fbec5d`.
 

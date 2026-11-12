@@ -107,3 +107,41 @@ test('veupathProcessedTranscriptColor walks a proxied feature to its gene', () =
     ),
   ).toBe('#98AFC7')
 })
+
+test('veupathStrandColor takes an unstranded colour through jexl', () => {
+  const pm = setup()
+  const colour = (strand: number) =>
+    pm.jexl.eval(
+      "veupathStrandColor(feature, 'orange', 'darkseagreen', 'red')",
+      buildJexlContext({
+        feature: new SimpleFeature({
+          id: `s${strand}`,
+          data: { refName: 'ctgA', start: 0, end: 10, strand },
+        }),
+      }),
+    )
+  expect([colour(1), colour(-1), colour(0)]).toEqual([
+    'orange',
+    'darkseagreen',
+    'red',
+  ])
+})
+
+test('veupathLinkDetails links only the matching type through jexl', () => {
+  const pm = setup()
+  const details = (type: string) =>
+    pm.jexl.eval(
+      "veupathLinkDetails(feature, 'scaffold', 'NCBI', 'https://www.ncbi.nlm.nih.gov/nuccore/', 'name')",
+      // formatDetails passes the serialized feature
+      {
+        feature: new SimpleFeature({
+          id: type,
+          data: { refName: 'ctgA', start: 0, end: 10, type, name: 'NW_1.1' },
+        }).toJSON(),
+      },
+    )
+  expect(details('scaffold')).toEqual({
+    NCBI: '<a href="https://www.ncbi.nlm.nih.gov/nuccore/NW_1.1" target="_blank" rel="noopener">NW_1.1</a>',
+  })
+  expect(details('gap')).toEqual({})
+})

@@ -1,6 +1,7 @@
 import Plugin from '@jbrowse/core/Plugin'
 
 import VeupathdbFeaturePanel from './VeupathdbFeaturePanel'
+import { linkDetails } from './linkDetails'
 import {
   bindingSiteColor,
   gsnapIntronColor,
@@ -31,6 +32,7 @@ export const JEXL_FUNCTIONS = {
   veupathSignalpColor: signalpColor,
   veupathIedbColor: iedbColor,
   veupathPostTranslationalModColor: postTranslationalModColor,
+  veupathLinkDetails: linkDetails,
 }
 
 export default class VEuPathDBDisplayPlugin extends Plugin {

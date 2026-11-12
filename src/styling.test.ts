@@ -29,6 +29,23 @@ describe('strandColor', () => {
   ])('strand %p is %s', (strand, expected) => {
     expect(strandColor(feature({ strand }), 'plus', 'minus')).toBe(expected)
   })
+
+  describe('unstranded', () => {
+    test.each([
+      [1, 'plus'],
+      ['+1', 'plus'],
+      [-1, 'minus'],
+      ['-1', 'minus'],
+      [0, 'none'],
+      ['0', 'none'],
+      [undefined, 'none'],
+      [null, 'none'],
+    ])('strand %p is %s', (strand, expected) => {
+      expect(strandColor(feature({ strand }), 'plus', 'minus', 'none')).toBe(
+        expected,
+      )
+    })
+  })
 })
 
 describe('processedTranscriptColor', () => {

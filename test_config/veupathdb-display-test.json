@@ -145,6 +145,30 @@
     },
     {
       "type": "FeatureTrack",
+      "trackId": "style_scaffolds",
+      "name": "Style: veupathStrandColor unstranded + veupathLinkDetails (scaffolds, gaps)",
+      "assemblyNames": ["volvox"],
+      "adapter": {
+        "type": "Gff3Adapter",
+        "uri": "http://localhost:9004/test_config/styling/scaffolds.gff3"
+      },
+      "formatDetails": {
+        "feature": "jexl:veupathLinkDetails(feature, 'scaffold', 'NCBI', 'https://www.ncbi.nlm.nih.gov/nuccore/', 'name')"
+      },
+      "displays": [
+        {
+          "type": "LinearBasicDisplay",
+          "displayId": "style_scaffolds-LinearBasicDisplay",
+          "encoding": {
+            "color": {
+              "value": "jexl:veupathStrandColor(feature, 'orange', 'darkseagreen', 'red')"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "FeatureTrack",
       "trackId": "style_transcripts",
       "name": "Style: veupathProcessedTranscriptColor",
       "assemblyNames": ["volvox"],

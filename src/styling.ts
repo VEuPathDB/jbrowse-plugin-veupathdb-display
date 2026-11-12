@@ -30,9 +30,24 @@ function str(feature: FeatureLike, name: string) {
   return String(feature.get(name))
 }
 
-/** processedTranscriptBorderColor, processedApolloTranscriptColor, estColor, estBorderColor, nrdbColor, orfColor, piggyBacColor */
-export function strandColor(feature: FeatureLike, plus: string, minus: string) {
-  return isPlusStrand(feature) ? plus : minus
+/**
+ * processedTranscriptBorderColor, processedApolloTranscriptColor, estColor, estBorderColor, nrdbColor, orfColor, piggyBacColor, scaffoldColor.
+ * `unstranded` colours strand 0 or absent; omitted, those paint `minus` as before.
+ */
+export function strandColor(
+  feature: FeatureLike,
+  plus: string,
+  minus: string,
+  unstranded?: string,
+) {
+  const strand = Number(feature.get('strand'))
+  if (strand === 1) {
+    return plus
+  }
+  if (strand === -1 || unstranded === undefined) {
+    return minus
+  }
+  return unstranded
 }
 
 const TRANSPOSABLE_ELEMENT_GENE = 'transposable_element_gene'
